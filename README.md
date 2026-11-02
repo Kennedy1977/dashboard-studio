@@ -11,7 +11,7 @@ cd dashboard-studio
 python3 -m http.server 4173
 ```
 
-Open [http://127.0.0.1:4173](http://127.0.0.1:4173) in your browser.
+Open [http://127.0.0.1:4173](http://127.0.0.1:4173) in your browser. The written guide is at `/guide.html` and the live copyable widget examples are at `/guide-examples.html`.
 
 The dashboard uses CDN versions of Tailwind CSS, GSAP and Lenis, so no install step is required for the demo.
 
