@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "orbit-overview",
+  "title": "Orbit Overview",
+  "theme": { "mode": "light", "palette": "violet-mint", "contrast": "default" },
+  "filters": { "dateRange": "last-30-days", "region": "all", "status": ["active"] },
+  "layout": [
+    { "id": "revenue", "type": "line", "x": 0, "y": 0, "w": 8, "h": 4 },
+    { "id": "traffic", "type": "donut", "x": 8, "y": 0, "w": 4, "h": 4 },
+    { "id": "activity", "type": "bar", "x": 0, "y": 4, "w": 5, "h": 4 },
+    { "id": "transactions", "type": "table", "x": 5, "y": 4, "w": 7, "h": 4 }
+  ],
+  "widgets": {
+    "revenue": { "title": "Revenue & growth", "source": "analytics.revenue", "config": { "adapter": "svg-line", "currency": "GBP", "showTarget": true } },
+    "traffic": { "title": "Traffic sources", "source": "analytics.traffic", "config": { "adapter": "svg-donut", "legend": "right" } },
+    "activity": { "title": "Weekly activity", "source": "analytics.activity", "config": { "adapter": "svg-bar", "grouped": true } },
+    "transactions": { "title": "Latest transactions", "source": "billing.transactions", "config": { "adapter": "native-table", "pageSize": 10, "stickyHeader": true } }
+  }
+}
