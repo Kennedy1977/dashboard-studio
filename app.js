@@ -17,7 +17,16 @@ if (window.Lenis) { const lenis = new Lenis({ duration: 1.1, smoothWheel: true }
 if (window.gsap) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const chartMotion = prefersReducedMotion ? { duration: 0 } : { duration: 1.15, ease: 'power3.out' };
-  gsap.from('.reveal', { y: 18, opacity: 0, duration: prefersReducedMotion ? 0 : .7, stagger: prefersReducedMotion ? 0 : .07, ease: 'power3.out', delay: .1 });
+  const revealed = new WeakSet();
+  const reveal = (element) => {
+    if (revealed.has(element)) return;
+    revealed.add(element);
+    gsap.from(element, { y: prefersReducedMotion ? 0 : 14, opacity: 0, duration: prefersReducedMotion ? 0 : .55, ease: 'power3.out' });
+  };
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { reveal(entry.target); observer.unobserve(entry.target); } }), { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  } else document.querySelectorAll('.reveal').forEach(reveal);
 
   document.querySelectorAll('.main-line').forEach((line) => {
     const length = line.getTotalLength();

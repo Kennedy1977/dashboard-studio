@@ -1,0 +1,14 @@
+/* Design direction: calm analytical workspace with restrained violet signal colour. */
+:root{--focus:#7357ff;--surface-shadow:0 16px 42px rgba(22,28,55,.055)}
+body{background:radial-gradient(circle at 92% 4%,#eeeaff 0,transparent 24%),#f4f5f7}
+.panel,.metric-card{box-shadow:var(--surface-shadow);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.panel:hover,.metric-card:hover{border-color:#d9d4ff;box-shadow:0 20px 48px rgba(22,28,55,.08)}
+.panel:focus-within,.metric-card:focus-within{border-color:#a99fff;box-shadow:0 0 0 4px rgba(115,87,255,.1),var(--surface-shadow)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(115,87,255,.35);outline-offset:3px}
+.nav-item.active{position:relative}.nav-item.active:before{content:'';position:absolute;left:-5px;height:18px;width:3px;border-radius:4px;background:var(--focus)}
+.button.primary{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.button.primary:hover{box-shadow:0 12px 26px rgba(115,87,255,.34)}
+.chart-point{filter:drop-shadow(0 3px 5px rgba(115,87,255,.25))}
+.profile-action,.widget-option,.icon-btn{transition:transform .2s ease,border-color .2s ease,background-color .2s ease,color .2s ease}
+.panel .icon-btn:hover,.metric-card .icon-btn:hover{transform:translateY(-1px)}
+@media(pointer:coarse){.panel:hover,.metric-card:hover{box-shadow:var(--surface-shadow);transform:none}}
+@media(prefers-reduced-motion:reduce){.panel,.metric-card,.button.primary,.profile-action,.widget-option,.icon-btn{transition:none}.panel:hover,.metric-card:hover{transform:none}}
