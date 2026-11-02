@@ -30,6 +30,10 @@ if (window.gsap) {
   gsap.from('.bar-pair i', { scaleY: 0, transformOrigin: 'bottom', duration: prefersReducedMotion ? 0 : .7, stagger: prefersReducedMotion ? 0 : .045, delay: .65, ease: 'back.out(1.5)' });
   gsap.from('.spark i', { scaleY: 0, transformOrigin: 'bottom', duration: prefersReducedMotion ? 0 : .45, stagger: prefersReducedMotion ? 0 : .035, delay: .5, ease: 'power2.out' });
   gsap.from('.donut', { rotation: -130, scale: .72, opacity: 0, duration: prefersReducedMotion ? 0 : 1, delay: .65, ease: 'back.out(1.4)' });
+  document.querySelectorAll('[data-progress]').forEach((bar) => {
+    const target = Number(bar.dataset.progress || 0);
+    gsap.to(bar, { width: `${target}%`, duration: prefersReducedMotion ? 0 : 1.2, delay: .55, ease: 'power3.out' });
+  });
 
   document.querySelectorAll('.panel').forEach((panel) => {
     panel.addEventListener('mouseenter', () => { if (!prefersReducedMotion) gsap.to(panel, { y: -3, duration: .25, ease: 'power2.out' }); });
